@@ -4,15 +4,19 @@
  box-sizing: inherit;
 }
 
+body {
+    background-color: black;
+}
+
 td {
-  font-family: Baskerville, serif;
+  font-family: Gravitas One;
   font-size: 130px;
-  border: 3px solid black;
+  border: 3px solid chartreuse;
   min-width: 150px;
   height: 150px;
   text-align: center;
   cursor: pointer;
-
+  color: oldlace;
 }
 .container {
   width: 495px;
@@ -70,16 +74,22 @@ h1, h2{
 }
 
 button {
-  position: absolute;
-  vertical-align: middle;
-  border-radius: 5px;
-  width: 88px;
-  margin: auto;
-  height: 26px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+    position: absolute;
+    vertical-align: middle;
+    border-radius: 5px;
+    border-style: none;
+    width: 88px;
+    margin: auto;
+    height: 31px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 17px;
+    color: black;
+    background-color: crimson;
+    font-family: Montserrat;
+    font-weight: 600;
 }
 
 p {
@@ -91,12 +101,16 @@ p {
     bottom: 0;
     left: 0;
     right: 0;
+    color: ivory;
+    font-family: Montserrat;
+    font-size: 24px;
 }
 
-span{
+span {
   margin-left: 10px;
   font-size: 30px;
   font-weight: bold;
+  color: crimson;
 }
 
 table {

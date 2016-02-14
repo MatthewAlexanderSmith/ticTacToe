@@ -70,6 +70,7 @@ $(document).on('ready', function() {
 
   function checkForWinner(idXs, idOs) {
     // Store all possible 3 digit combinations of idXs and idOs
+    // See combos.js for combination generator.
     var xCombos = k_combinations(idXs, 3);
     var oCombos = k_combinations(idOs, 3);
     // Store sums of all 3 digit combinations of idXs and idOs
