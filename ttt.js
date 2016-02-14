@@ -23,9 +23,9 @@ $(document).on('ready', function() {
     var idOs = [];
     $('.o').each(function(){idOs.push(parseInt(this.id, 10))});
 
-      checkForWinner(idXs, idOs);
+    checkForWinner(idXs, idOs);
 
-      turn++;
+    turn++;
   });
 
   function checkForWinner(idXs, idOs) {

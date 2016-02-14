@@ -17,8 +17,6 @@ function k_combinations(set, k) {
 		return combs;
 	}
 
-	// Assert {1 < k < set.length}
-
 	combs = [];
 	for (i = 0; i < set.length - k + 1; i++) {
 		head = set.slice(i, i+1);

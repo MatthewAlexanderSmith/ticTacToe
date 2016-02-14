@@ -1,9 +1,25 @@
 td {
   font-family: Baskerville, serif;
-  font-size: 150px;
+  font-size: 130px;
   border: 3px solid black;
-  width: 300px;
-  height: 300px;
+  min-width: 150px;
+  height: 150px;
   text-align: center;
   cursor: pointer;
+
+}
+
+.container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+.message{
+  height: 130px;
+}
+
+
+table {
+    border-collapse: collapse;
 }
