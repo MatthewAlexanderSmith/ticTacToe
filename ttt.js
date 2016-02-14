@@ -1,6 +1,10 @@
 $(document).on('ready', function() {
   var turn = 0;
 
+  // function init(){
+  //   $('td').off().on('click',
+  // }
+
   $('td').on('click', function() {
     // this === DOM Element
     // $(this) === jQuery Object
@@ -24,11 +28,14 @@ $(document).on('ready', function() {
     $('.o').each(function(){idOs.push(parseInt(this.id, 10))});
 
     checkForWinner(idXs, idOs);
-
+    
     turn++;
+
   });
 
   function checkForWinner(idXs, idOs) {
+
+    this.winner = "";
     // Store all possible 3 digit combinations of idXs
     var xCombos = k_combinations(idXs, 3);
 
@@ -53,8 +60,9 @@ $(document).on('ready', function() {
     // We got a Winner!
     if (xSums.some(elem => elem === 15)){
       alert("X Player Wins!")
-      location.reload();
-      // $('td').removeAttr('class').html('').click();
+      this.winner = 1;
+      // location.reload();
+      // $('td').on('click', )
       // turn = 0;
 
     } else if (oSums.some(elem => elem === 15)) {
