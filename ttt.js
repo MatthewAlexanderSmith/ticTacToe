@@ -1,13 +1,36 @@
 $(document).on('ready', function() {
   var turn = 0;
+  var collect = new idCollect();
+  tdInit();
+
 
   // function init(){
   //   $('td').off().on('click',
   // }
 
-  $('td').on('click', function() {
+  function tdInit(){
+    $('td').off().on('click', makeMove);
+    $('body').data("game", 0)
+    collect.idOs = [];
+    collect.idXs = [];
+    xSums = [];
+    oSums= [];
+    turn = 0;
+
+  }
+
+  function idCollect(idXs, idOs, xSums, oSums){
+    this.idXs = idXs;
+    this.idOs = idOs;
+    this.xSums = xSums;
+    this.oSums = oSums;
+
+  }
+
+  // $('td').on('click', makeMove);
     // this === DOM Element
     // $(this) === jQuery Object
+  function makeMove() {
     console.log(turn);
     var self = $(this);
 
@@ -20,6 +43,7 @@ $(document).on('ready', function() {
 
     self.off('click');
 
+
     // Store id of all TD's with class="x"
     var idXs = [];
     $('.x').each(function(){idXs.push(parseInt(this.id, 10))});
@@ -27,15 +51,26 @@ $(document).on('ready', function() {
     var idOs = [];
     $('.o').each(function(){idOs.push(parseInt(this.id, 10))});
 
-    checkForWinner(idXs, idOs);
-    
+    collect.idXs = idXs;
+    collect.idOs = idOs;
+
+
     turn++;
 
-  });
+    checkForWinner(collect.idXs, collect.idOs);
+
+    if ($('body').data("game") === 1){
+      alert("Play Again?");
+      tdInit();
+    };
+
+
+
+  };
 
   function checkForWinner(idXs, idOs) {
 
-    this.winner = "";
+
     // Store all possible 3 digit combinations of idXs
     var xCombos = k_combinations(idXs, 3);
 
@@ -60,19 +95,29 @@ $(document).on('ready', function() {
     // We got a Winner!
     if (xSums.some(elem => elem === 15)){
       alert("X Player Wins!")
-      this.winner = 1;
+      $('td').removeAttr('class').html('');
+      xSums = [];
+      oSums = [];
+
+      xCombos = [];
+      oCombos = [];
+      $('body').data("game", 1);
+
+      // location.reload();
+      // this.winner = 1;
       // location.reload();
       // $('td').on('click', )
       // turn = 0;
 
     } else if (oSums.some(elem => elem === 15)) {
       alert("O Player Wins!")
-      location.reload();
-      // $('td').removeAttr('class').html('').click();
+      // location.reload();
+      $('td').removeAttr('class').html('');
+      $('body').data("game", 1);
       // turn = 0;
     } else if (turn >= 8) {
       alert("It's a draw!")
-      location.reload();
+      // location.reload();
     };
   }
 });
