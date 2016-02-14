@@ -1,14 +1,11 @@
 $(document).on('ready', function() {
   $(function(){
     $("h1").typed({
-      strings: ["Welcome to jQuery Tic-Tac-Toe", "No biting", "eye gauging", "or fish hooks", "x plays first", "click a square to begin"],
-      typeSpeed: 10
+      strings: ["Welcome to jQuery Tic-Tac-Toe", "No biting", "Eye gauging", "Or fish hooks", "x plays first", "let's get in on!", "click a square to begin..."],
+      typeSpeed: 10,
+      contentType: 'text'
     });
   });
-
-  console.log($('h1').html());
-
-
 
   var turn = 0;
   var game = new gameTracker(0, 0);
@@ -19,6 +16,7 @@ $(document).on('ready', function() {
     $('.xScore span').text(game.xWins);
     $('.oScore span').text(game.oWins);
     turn = 0;
+    console.log($('h1').html());
   }
 
   function gameTracker(xWins, oWins){
