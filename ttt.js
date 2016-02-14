@@ -1,6 +1,7 @@
 $(document).on('ready', function() {
   var turn = 0;
   // var collect = new idCollect();
+  var game = new gameTracker(0, 0);
   tdInit();
 
   function tdInit(){
@@ -9,12 +10,18 @@ $(document).on('ready', function() {
     turn = 0;
   }
 
-  // function idCollect(idXs, idOs, xSums, oSums){
-  //   this.idXs = idXs;
-  //   this.idOs = idOs;
-  //   this.xSums = xSums;
-  //   this.oSums = oSums;
-  // }
+  function gameTracker(xWins, oWins){
+    this.xWins = xWins,
+    this.oWins = oWins
+    this.oneUpX = function(){
+      ++this.xWins;
+      console.log(this.xWins);
+    }
+    this.oneUpO = function(){
+      ++this.oWins;
+      console.log(this.oWins);
+    }
+  }
 
   function makeMove() {
     // Save the <td> jQuery element that was clicked to self
@@ -64,9 +71,12 @@ $(document).on('ready', function() {
 
     if (xWins){
       alert("X Player Wins!")
+      // ++game.xWins;
+      game.oneUpX();
       tdInit();
     } else if (oWins) {
       alert("O Player Wins!")
+      game.oneUpO();
       tdInit();
     } else if (turn >= 9) {
       alert("It's a draw!")
