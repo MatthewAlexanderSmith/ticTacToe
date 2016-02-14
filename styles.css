@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+ box-sizing: inherit;
+}
+
 td {
   font-family: Baskerville, serif;
   font-size: 130px;
@@ -8,7 +14,6 @@ td {
   cursor: pointer;
 
 }
-
 .container {
   width: 80%;
   height: 100%;
@@ -16,10 +21,58 @@ td {
 }
 
 .message{
-  height: 130px;
+  height: 74px;
   text-align: center;
+  line-height: 16px;
 }
 
+.score{
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.centerScores {
+  margin: 0 auto;
+  width: 60%;
+  height: 100%;
+}
+
+.xScore{
+  height:100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  float: left;
+  position: relative;
+}
+
+.oScore{
+  height: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  float: left;
+  position: relative;
+}
+
+p {
+    position: absolute;
+    vertical-align: middle;
+    margin: auto;
+    height: 20px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+span{
+  margin-left: 10px;
+  font-size: 30px;
+  font-weight: bold;
+}
 
 table {
     border-collapse: collapse;

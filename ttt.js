@@ -5,6 +5,8 @@ $(document).on('ready', function() {
 
   function tdInit(){
     $('td').off().on('click', makeMove).removeAttr('class').html('');
+    $('.xScore span').text(game.xWins);
+    $('.oScore span').text(game.oWins);
     turn = 0;
   }
 
@@ -34,7 +36,7 @@ $(document).on('ready', function() {
     } else {
       self.html('X').addClass('x');
     };
-    
+
     self.off('click');
 
     $('.x').each(function(){idXs.push(parseInt(this.id, 10))});
