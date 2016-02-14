@@ -21,14 +21,16 @@ td {
 }
 
 .message{
-  height: 74px;
+  height: 30px;
   text-align: center;
-  line-height: 16px;
+}
+
+h1, h2{
+  margin: 0;
 }
 
 .score{
-  height: 80px;
-  margin-bottom: 20px;
+  height: 75px;
 }
 
 .centerScores {
@@ -61,7 +63,7 @@ p {
     position: absolute;
     vertical-align: middle;
     margin: auto;
-    height: 20px;
+    height: 36px;
     top: 0;
     bottom: 0;
     left: 0;
