@@ -15,7 +15,7 @@ td {
 
 }
 .container {
-  width: 80%;
+  width: 495px;
   height: 100%;
   margin: auto;
 }
@@ -35,7 +35,7 @@ h1, h2{
 
 .centerScores {
   margin: 0 auto;
-  width: 60%;
+  width: 100%;
   height: 100%;
 }
 
@@ -43,7 +43,7 @@ h1, h2{
   height:100%;
   border-collapse: collapse;
   margin: 0 auto;
-  width: 50%;
+  width: 33%;
   text-align: center;
   float: left;
   position: relative;
@@ -53,10 +53,33 @@ h1, h2{
   height: 100%;
   border-collapse: collapse;
   margin: 0 auto;
-  width: 50%;
+  width: 33%;
   text-align: center;
   float: left;
   position: relative;
+}
+
+.resetButton{
+  height: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 33%;
+  text-align: center;
+  float: left;
+  position: relative;
+}
+
+button {
+  position: absolute;
+  vertical-align: middle;
+  border-radius: 5px;
+  width: 88px;
+  margin: auto;
+  height: 26px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 p {
@@ -78,5 +101,5 @@ span{
 
 table {
     border-collapse: collapse;
-    
+
 }

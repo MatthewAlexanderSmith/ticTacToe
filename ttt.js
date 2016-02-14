@@ -1,11 +1,15 @@
 $(document).on('ready', function() {
-  $(function(){
-    $("h1").typed({
-      strings: ["Welcome to jQuery Tic-Tac-Toe", "No biting", "Eye gauging", "Or fish hooks", "x plays first", "let's get in on!", "click a square to begin..."],
-      typeSpeed: 10,
-      contentType: 'text'
-    });
-  });
+  // $(function(){
+  //   $("h1").typed({
+  //     strings: ["Welcome to jQuery Tic-Tac-Toe", "No biting", "Eye gauging", "Or fish hooks", "x plays first", "let's get in on!", "click a square to begin..."],
+  //     typeSpeed: 10,
+  //     contentType: 'text'
+  //   });
+  // });
+
+  $("table").toggle();
+  $(".centerScores").toggle();
+
 
   var turn = 0;
   var game = new gameTracker(0, 0);
@@ -13,10 +17,18 @@ $(document).on('ready', function() {
 
   function tdInit(){
     $('td').off().on('click', makeMove).removeAttr('class').html('');
+    $('button').on('click', gameReset);
     $('.xScore span').text(game.xWins);
     $('.oScore span').text(game.oWins);
     turn = 0;
     console.log($('h1').html());
+  }
+
+  function gameReset(){
+    game.oWins = 0;
+    game.xWins = 0;
+    $('.xScore span').text(game.xWins);
+    $('.oScore span').text(game.oWins);
   }
 
   function gameTracker(xWins, oWins){

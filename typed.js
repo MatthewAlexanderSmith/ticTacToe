@@ -422,9 +422,8 @@
         contentType: 'html',
         // call when done callback function
         callback: function() {
-          console.log("do Stuff")
           $("table").toggle();
-          $(".centerScores").toggle();  
+          $(".centerScores").toggle();
         },
         // starting callback function before each string
         preStringTyped: function() {},
