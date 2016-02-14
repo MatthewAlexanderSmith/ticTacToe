@@ -3,7 +3,7 @@ $(document).on('ready', function() {
   $('td').on('click', function() {
     // this === DOM Element
     // $(this) === jQuery Object
-
+    console.log(turn);
     var self = $(this);
 
     if ( turn % 2 ) {
@@ -23,16 +23,18 @@ $(document).on('ready', function() {
     $('.o').each(function(){idOs.push(parseInt(this.id, 10))});
 
     checkForWinner(idXs, idOs);
+    // console.log(checkForWinner());
 
-    turn++;
+      turn++;
+
   });
 
   function checkForWinner(idXs, idOs) {
     // Store all possible 3 digit combinations of idXs
-    var xCombos = xCombos = k_combinations(idXs, 3);
+    var xCombos = k_combinations(idXs, 3);
 
     // Store all possible 3 digit combinations of idOs
-    var oCombos = oCombos = k_combinations(idOs, 3);
+    var oCombos = k_combinations(idOs, 3);
 
     // Store sums of all 3 digit combinations of idXs
     var xSums = [];
@@ -52,8 +54,15 @@ $(document).on('ready', function() {
     // We got a Winner!
     if (xSums.some(elem => elem === 15)){
       alert("X Player Wins!")
-    } else if (oSums.some(elem => elem === 15)) {
+      location.reload();
+      // $('td').removeAttr('class').html('').click();
+      // turn = 0;
+
+      } else if (oSums.some(elem => elem === 15)) {
       alert("O Player Wins!")
+      location.reload();
+      // $('td').removeAttr('class').html('').click();
+      // turn = 0;
     };
   }
 });
