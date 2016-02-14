@@ -1,7 +1,6 @@
 $(document).on('ready', function() {
   var turn = 0;
-  var idXs = [];
-  var idOs = [];
+
   $('td').on('click', function() {
     // this === DOM Element
     // $(this) === jQuery Object
@@ -18,15 +17,14 @@ $(document).on('ready', function() {
     self.off('click');
 
     // Store id of all TD's with class="x"
-    // var idXs = [];
+    var idXs = [];
     $('.x').each(function(){idXs.push(parseInt(this.id, 10))});
     // Store id of all TD's with class="o"
-    // var idOs = [];
+    var idOs = [];
     $('.o').each(function(){idOs.push(parseInt(this.id, 10))});
 
-    if(turn >= 4){
       checkForWinner(idXs, idOs);
-    };
+
       turn++;
   });
 
@@ -59,11 +57,14 @@ $(document).on('ready', function() {
       // $('td').removeAttr('class').html('').click();
       // turn = 0;
 
-      } else if (oSums.some(elem => elem === 15)) {
+    } else if (oSums.some(elem => elem === 15)) {
       alert("O Player Wins!")
       location.reload();
       // $('td').removeAttr('class').html('').click();
       // turn = 0;
+    } else if (turn >= 8) {
+      alert("It's a draw!")
+      location.reload();
     };
   }
 });
