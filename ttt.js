@@ -10,28 +10,30 @@ $(document).on('ready', function() {
   $("table").toggle();
   $(".centerScores").toggle();
 
-
   var turn = 0;
-  var game = new gameTracker(0, 0);
+  var game = new scoreTracker(0, 0);
   tdInit();
 
   function tdInit(){
     $('td').off().on('click', makeMove).removeAttr('class').html('');
     $('button').on('click', gameReset);
-    $('.xScore span').text(game.xWins);
-    $('.oScore span').text(game.oWins);
+    scoreUpdate();
     turn = 0;
     console.log($('h1').html());
+  }
+
+  function scoreUpdate(){
+    $('.xScore span').text(game.xWins);
+    $('.oScore span').text(game.oWins);
   }
 
   function gameReset(){
     game.oWins = 0;
     game.xWins = 0;
-    $('.xScore span').text(game.xWins);
-    $('.oScore span').text(game.oWins);
+    scoreUpdate();
   }
 
-  function gameTracker(xWins, oWins){
+  function scoreTracker(xWins, oWins){
     this.xWins = xWins,
     this.oWins = oWins
     this.oneUpX = function(){
