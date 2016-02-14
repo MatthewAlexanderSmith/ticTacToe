@@ -1,5 +1,7 @@
 $(document).on('ready', function() {
   var turn = 0;
+  var idXs = [];
+  var idOs = [];
   $('td').on('click', function() {
     // this === DOM Element
     // $(this) === jQuery Object
@@ -16,17 +18,16 @@ $(document).on('ready', function() {
     self.off('click');
 
     // Store id of all TD's with class="x"
-    var idXs = [];
+    // var idXs = [];
     $('.x').each(function(){idXs.push(parseInt(this.id, 10))});
     // Store id of all TD's with class="o"
-    var idOs = []
+    // var idOs = [];
     $('.o').each(function(){idOs.push(parseInt(this.id, 10))});
 
-    checkForWinner(idXs, idOs);
-    // console.log(checkForWinner());
-
+    if(turn >= 4){
+      checkForWinner(idXs, idOs);
+    };
       turn++;
-
   });
 
   function checkForWinner(idXs, idOs) {
