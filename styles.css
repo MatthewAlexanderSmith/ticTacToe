@@ -9,6 +9,7 @@ body {
 }
 
 td {
+
   font-family: Gravitas One;
   font-size: 130px;
   border: 3px solid chartreuse;
@@ -19,22 +20,36 @@ td {
   color: oldlace;
 }
 .container {
-  width: 495px;
-  height: 100%;
-  margin: auto;
+    width: 495px;
+    height: 625px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
+
+.messageContainer {
+  height: 75px;
+}
 .message{
-  height: 35px;
+  height: 58px;
   text-align: center;
 }
 
 h1, h2{
   margin: 0;
+  color: white;
+  height: 39px;
+      font-family: Montserrat;
 }
 
-.score{
-  height: 75px;
+.score {
+    height: 75px;
+    width: 94%;
+    margin: 0 auto;
 }
 
 .centerScores {
@@ -104,6 +119,12 @@ p {
     color: ivory;
     font-family: Montserrat;
     font-size: 24px;
+    border: 1px solid whitesmoke;
+}
+
+#mainMessage {
+    position: static;
+    border: none;
 }
 
 span {

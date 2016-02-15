@@ -1,17 +1,18 @@
 $(document).on('ready', function() {
-  // $(function(){
-  //   $("h1").typed({
-  //     strings: ["Welcome to jQuery Tic-Tac-Toe", "No biting", "Eye gauging", "Or fish hooks", "x plays first", "let's get in on!", "click a square to begin..."],
-  //     typeSpeed: 10,
-  //     contentType: 'text'
-  //   });
-  // });
+  $(function(){
+    $("#mainMessage").typed({
+      strings: ["Welcome to jQuery Tic-Tac-Toe", "x plays first", "click a square to begin..."],
+      typeSpeed: 1,
+      contentType: 'text'
+    });
+  });
 
-  $("table").toggle();
-  $(".centerScores").toggle();
+  // $("table").toggle();
+  // $(".centerScores").toggle();
 
   var turn = 0;
   var game = new scoreTracker(0, 0);
+  $('body').data("gameState", "waiting");
   tdInit();
 
   function tdInit(){
@@ -19,17 +20,23 @@ $(document).on('ready', function() {
     $('button').on('click', gameReset);
     scoreUpdate();
     turn = 0;
-    console.log($('h1').html());
+    if ($('body').data("gameState")==="playing"){
+      $('#mainMessage').toggle();
+      $('body').data("gameState", "waiting");
+    }
+
   }
 
   function scoreUpdate(){
     $('.xScore span').text(game.xWins);
     $('.oScore span').text(game.oWins);
+
   }
 
   function gameReset(){
     game.oWins = 0;
     game.xWins = 0;
+    $('h1').html('');
     scoreUpdate();
   }
 
@@ -47,6 +54,12 @@ $(document).on('ready', function() {
   }
 
   function makeMove() {
+    if ($('body').data("gameState") === "waiting"){
+      $('#mainMessage').toggle();
+      $('h1').html("GAME ON");
+      $('body').data("gameState", "playing")
+    }
+
     // Save the <td> jQuery element that was clicked
     var self = $(this);
     // Store id of all <td>'s with class="x"
@@ -90,15 +103,18 @@ $(document).on('ready', function() {
     var draw = (turn >= 9); // Returns true or false
 
     if (xWins){
-      alert("X Player Wins!")
+      $('h1').html("Player X WON!");
+      alert("Press Enter to Play another Game")
       game.oneUpX();
       tdInit();
     } else if (oWins) {
-      alert("O Player Wins!")
+      $('h1').html("Player O WON!");
+      alert("Press Enter to Play another Game")
       game.oneUpO();
       tdInit();
     } else if (draw) {
-      alert("It's a draw!")
+      $('h1').html("DRAW!");
+      alert("Press Enter to Play another Game")
       tdInit();
     };
   }
