@@ -4,21 +4,68 @@
  box-sizing: inherit;
 }
 
+@font-face {
+        font-family: "score-board";
+        src: url(/Users/Macbook/desktop/Bitmaker/Lessons/Projects/ticTacToe/fonts/advanced_led_board-7.ttf);
+}
+
+@font-face {
+  font-family: "necrotype";
+  src: url(/Users/Macbook/desktop/Bitmaker/Lessons/Projects/ticTacToe/fonts/Necrotype.ttf);
+}
+
+
 body {
     background-color: black;
 }
 
 td {
-
-  font-family: Gravitas One;
-  font-size: 130px;
-  border: 3px solid chartreuse;
-  min-width: 150px;
-  height: 150px;
-  text-align: center;
-  cursor: pointer;
-  color: oldlace;
+    font-family: Gravitas One;
+    font-size: 127px;
+    /* border: 3px solid chartreuse; */
+    min-width: 150px;
+    height: 150px;
+    text-align: center;
+    cursor: pointer;
+    color: oldlace;
+    box-shadow: 0px 0px 1px 1px chartreuse;
 }
+
+/*#2 {
+  border-top: none;
+  border-left: none;
+}
+
+#9 {
+  border-left: none;
+}
+
+#4 {
+  border-left: none;
+  border-bottom: none;
+}
+
+#7 {
+  border-top: none;
+}
+
+#6 {
+  border-top: none;
+  border-right: none;
+}
+
+#1 {
+  border-right: none;
+}
+
+#3 {
+  border-bottom: none;
+}
+
+#8 {
+  border-right: none;
+  border-bottom: none;
+}*/
 .container {
     width: 495px;
     height: 625px;
@@ -39,13 +86,20 @@ td {
   text-align: center;
 }
 
-h1, h2{
-  margin: 0;
-  color: white;
-  height: 39px;
-      font-family: Montserrat;
+.mainTitleContainer {
+  height: 33px;
 }
 
+#mainTitle {
+    margin: 0;
+    color: white;
+    letter-spacing: 2px;
+    height: 42px;
+    font-family: score-board;
+    font-size: 40px;
+    box-shadow: none;
+    padding-top: 8px;
+}
 .score {
     height: 75px;
     width: 94%;
@@ -91,20 +145,26 @@ h1, h2{
 button {
     position: absolute;
     vertical-align: middle;
-    border-radius: 5px;
+    border-radius: 0px;
     border-style: none;
-    width: 88px;
+    width: 106px;
     margin: auto;
-    height: 31px;
+    margin-left: 26px;
+    height: 27px;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    font-size: 17px;
+    font-size: 21px;
     color: black;
-    background-color: crimson;
-    font-family: Montserrat;
-    font-weight: 600;
+    background-color: gainsboro;
+    font-family: score-board;
+    font-weight: 500;
+    box-shadow: 0px 0px 2px 2px gainsboro;
+    letter-spacing: 1px;
+    padding-top: 9px;
+    padding-left: 9px;
+    letter-spacing: 2px;
 }
 
 p {
@@ -112,19 +172,26 @@ p {
     vertical-align: middle;
     margin: auto;
     height: 36px;
-    top: 0;
+    top: 0px;
     bottom: 0;
     left: 0;
     right: 0;
     color: ivory;
-    font-family: Montserrat;
+    font-family: score-board;
     font-size: 24px;
-    border: 1px solid whitesmoke;
+    border: 0px solid whitesmoke;
+    box-shadow: 0px 0px 3px 1px ghostwhite;
+    padding-top: 9px;
 }
 
 #mainMessage {
     position: static;
     border: none;
+    box-shadow: none;
+    color: chartreuse;
+    font-family: score-board;
+    font-size: larger;
+    margin-top: 17px;
 }
 
 span {

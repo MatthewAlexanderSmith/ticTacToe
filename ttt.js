@@ -1,31 +1,47 @@
-$(document).on('ready', function() {
+// $(document).on('ready', function() {
+  var turn = 0;
+  var game = new scoreTracker(0, 0);
+  var mode = new gameState("initializing");
+  logState();
+
   $(function(){
     $("#mainMessage").typed({
-      strings: ["Welcome to jQuery Tic-Tac-Toe", "x plays first", "click a square to begin..."],
+      strings: ["Welcome to jQuery Tic-Tac-Toe", "click any square to begin..."],
       typeSpeed: 1,
       contentType: 'text'
     });
   });
-
   // $("table").toggle();
   // $(".centerScores").toggle();
 
-  var turn = 0;
-  var game = new scoreTracker(0, 0);
-  $('body').data("gameState", "waiting");
-  tdInit();
+  // console.log(gameIni);
 
   function tdInit(){
     $('td').off().on('click', makeMove).removeAttr('class').html('');
     $('button').on('click', gameReset);
     scoreUpdate();
     turn = 0;
-    if ($('body').data("gameState")==="playing"){
-      $('#mainMessage').toggle();
-      $('body').data("gameState", "waiting");
+    if ((mode.state === "initializing") || (mode.state === "playing")) {
+      $('.hideMessage').toggle();
+      mode.state = "waiting";
+      logState();
     }
-
+    else if (mode.state==="waiting") {
+      logState();
+      blinker();
+      setInterval(blinker, 1000);
+    }
+      // $('body').data("gameState", "waiting");
   }
+
+  function logState(){
+    console.log(mode.state);
+  }
+
+  function blinker() {
+      $('#mainMessage').fadeOut(500);
+      $('#mainMessage').fadeIn(500);
+    };
 
   function scoreUpdate(){
     $('.xScore span').text(game.xWins);
@@ -36,7 +52,7 @@ $(document).on('ready', function() {
   function gameReset(){
     game.oWins = 0;
     game.xWins = 0;
-    $('h1').html('');
+    $('#mainTitle').html('');
     scoreUpdate();
   }
 
@@ -53,11 +69,15 @@ $(document).on('ready', function() {
     }
   }
 
+  function gameState(state){
+    this.state = state;
+  }
   function makeMove() {
-    if ($('body').data("gameState") === "waiting"){
-      $('#mainMessage').toggle();
-      $('h1').html("GAME ON");
-      $('body').data("gameState", "playing")
+    if (mode.state === "waiting"){
+      $('.hideMessage').toggle();
+      $('#mainTitle').text("GAME ON");
+      mode.state = "playing";
+      console.log(mode.state);
     }
 
     // Save the <td> jQuery element that was clicked
@@ -103,19 +123,19 @@ $(document).on('ready', function() {
     var draw = (turn >= 9); // Returns true or false
 
     if (xWins){
-      $('h1').html("Player X WON!");
+      $('#mainTitle').html("Player X WON!");
       alert("Press Enter to Play another Game")
       game.oneUpX();
       tdInit();
     } else if (oWins) {
-      $('h1').html("Player O WON!");
+      $('#mainTitle').html("Player O WON!");
       alert("Press Enter to Play another Game")
       game.oneUpO();
       tdInit();
     } else if (draw) {
-      $('h1').html("DRAW!");
+      $('#mainTitle').html("DRAW!");
       alert("Press Enter to Play another Game")
       tdInit();
     };
   }
-});
+// });
