@@ -107,7 +107,7 @@ td {
 }
 
 .centerScores {
-  margin: 0 auto;
+  margin-left: 6px;
   width: 100%;
   height: 100%;
 }
@@ -149,7 +149,7 @@ button {
     border-style: none;
     width: 106px;
     margin: auto;
-    margin-left: 26px;
+    margin-left: 20px;
     height: 27px;
     top: 0;
     bottom: 0;

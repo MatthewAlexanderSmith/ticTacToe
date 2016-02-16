@@ -422,14 +422,11 @@
           contentType: 'html',
           // call when done callback function
           callback: function() {
-            $("table").fadeIn(1000);
-            $(".centerScores").fadeIn(1000);
-            mode.state = "waiting";
-            tdInit();
-            // start();
-            // $.getScript("ttt.js");
-            // mode.state = "waiting";
-            // $("body").data("game", "on");
+            // $("table").fadeIn(1000);
+            // $(".centerScores").fadeIn(1000);
+            // // mode.state = "waiting";
+            // tdInit();
+            // gameReset();
 
           },
           // starting callback function before each string

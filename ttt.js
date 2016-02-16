@@ -1,20 +1,23 @@
-// $(document).on('ready', function() {
+$(document).on('ready', function() {
   var turn = 0;
   var game = new scoreTracker(0, 0);
   var mode = new gameState("initializing");
-  logState();
+  logState(mode);
 
   $(function(){
     $("#mainMessage").typed({
       strings: ["Welcome to jQuery Tic-Tac-Toe", "click any square to begin..."],
       typeSpeed: 1,
-      contentType: 'text'
+      contentType: 'text',
+      callback: function() {
+        $("table").fadeIn(1000);
+        $(".centerScores").fadeIn(1000);
+        mode.state = "waiting";
+        tdInit();
+        gameReset();
+      },
     });
   });
-  // $("table").toggle();
-  // $(".centerScores").toggle();
-
-  // console.log(gameIni);
 
   function tdInit(){
     $('td').off().on('click', makeMove).removeAttr('class').html('');
@@ -24,54 +27,16 @@
     if ((mode.state === "initializing") || (mode.state === "playing")) {
       $('.hideMessage').toggle();
       mode.state = "waiting";
-      logState();
+      logState(mode);
     }
     else if (mode.state==="waiting") {
-      logState();
+      logState(mode);
       blinker();
       setInterval(blinker, 1000);
     }
-      // $('body').data("gameState", "waiting");
+      
   }
 
-  function logState(){
-    console.log(mode.state);
-  }
-
-  function blinker() {
-      $('#mainMessage').fadeOut(500);
-      $('#mainMessage').fadeIn(500);
-    };
-
-  function scoreUpdate(){
-    $('.xScore span').text(game.xWins);
-    $('.oScore span').text(game.oWins);
-
-  }
-
-  function gameReset(){
-    game.oWins = 0;
-    game.xWins = 0;
-    $('#mainTitle').html('');
-    scoreUpdate();
-  }
-
-  function scoreTracker(xWins, oWins){
-    this.xWins = xWins,
-    this.oWins = oWins
-    this.oneUpX = function(){
-      ++this.xWins;
-      console.log(this.xWins);
-    }
-    this.oneUpO = function(){
-      ++this.oWins;
-      console.log(this.oWins);
-    }
-  }
-
-  function gameState(state){
-    this.state = state;
-  }
   function makeMove() {
     if (mode.state === "waiting"){
       $('.hideMessage').toggle();
@@ -101,41 +66,82 @@
     checkForWinner(idXs, idOs);
   };
 
-  function checkForWinner(idXs, idOs) {
-    // Store all possible 3 digit combinations of idXs and idOs
-    // See combos.js for combination generator.
-    var xCombos = k_combinations(idXs, 3);
-    var oCombos = k_combinations(idOs, 3);
-    // Store sums of all 3 digit combinations of idXs and idOs
-    var xSums = [];
-    var oSums = [];
 
-    // Calculate the sum of all 3 digit combinations separately
-    for (var i = 0; i < xCombos.length; i++){
-      xSums.push(xCombos[i].reduce((prev, curr) => prev + curr));
+    function logState(mode){
+      console.log(mode.state);
     }
-    for (var i = 0; i < oCombos.length; i++){
-      oSums.push(oCombos[i].reduce((prev, curr) => prev + curr));
-    }
-    // Check if any sum adds up to 15
-    var xWins = xSums.some(elem => elem === 15); // returns true or false
-    var oWins = oSums.some(elem => elem === 15); // returns true or false
-    var draw = (turn >= 9); // Returns true or false
 
-    if (xWins){
-      $('#mainTitle').html("Player X WON!");
-      alert("Press Enter to Play another Game")
-      game.oneUpX();
-      tdInit();
-    } else if (oWins) {
-      $('#mainTitle').html("Player O WON!");
-      alert("Press Enter to Play another Game")
-      game.oneUpO();
-      tdInit();
-    } else if (draw) {
-      $('#mainTitle').html("DRAW!");
-      alert("Press Enter to Play another Game")
-      tdInit();
-    };
-  }
-// });
+    function blinker() {
+        $('#mainMessage').fadeOut(500);
+        $('#mainMessage').fadeIn(500);
+      };
+
+    function scoreUpdate(){
+      $('.xScore span').text(game.xWins);
+      $('.oScore span').text(game.oWins);
+    }
+
+    function gameReset(){
+      game.oWins = 0;
+      game.xWins = 0;
+      $('#mainTitle').html('New Game');
+      scoreUpdate();
+    }
+
+    function scoreTracker(xWins, oWins){
+      this.xWins = xWins,
+      this.oWins = oWins
+      this.oneUpX = function(){
+        ++this.xWins;
+        console.log(this.xWins);
+      }
+      this.oneUpO = function(){
+        ++this.oWins;
+        console.log(this.oWins);
+      }
+    }
+
+    function gameState(state){
+      this.state = state;
+    }
+
+
+    function checkForWinner(idXs, idOs) {
+      // Store all possible 3 digit combinations of idXs and idOs
+      // See combos.js for combination generator.
+      var xCombos = k_combinations(idXs, 3);
+      var oCombos = k_combinations(idOs, 3);
+      // Store sums of all 3 digit combinations of idXs and idOs
+      var xSums = [];
+      var oSums = [];
+
+      // Calculate the sum of all 3 digit combinations separately
+      for (var i = 0; i < xCombos.length; i++){
+        xSums.push(xCombos[i].reduce((prev, curr) => prev + curr));
+      }
+      for (var i = 0; i < oCombos.length; i++){
+        oSums.push(oCombos[i].reduce((prev, curr) => prev + curr));
+      }
+      // Check if any sum adds up to 15
+      var xWins = xSums.some(elem => elem === 15); // returns true or false
+      var oWins = oSums.some(elem => elem === 15); // returns true or false
+      var draw = (turn >= 9); // Returns true or false
+
+      if (xWins){
+        $('#mainTitle').html("Player X WON!");
+        alert("Press Enter to Play another Game")
+        game.oneUpX();
+        tdInit();
+      } else if (oWins) {
+        $('#mainTitle').html("Player O WON!");
+        alert("Press Enter to Play another Game")
+        game.oneUpO();
+        tdInit();
+      } else if (draw) {
+        $('#mainTitle').html("DRAW!");
+        alert("Press Enter to Play another Game")
+        tdInit();
+      };
+    }
+
+});
