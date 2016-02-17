@@ -6,7 +6,7 @@ $(document).on('ready', function() {
 
   $(function(){
     $("#mainMessage").typed({
-      strings: ["Welcome to jQuery Tic-Tac-Toe", "click any square to begin..."],
+      strings: ["Welcome to jQuery Tic-Tac-Toe", "no biting", "no eye gauging", "no fish hooks", "click any square to begin..."],
       typeSpeed: 1,
       contentType: 'text',
       callback: function() {
@@ -34,7 +34,7 @@ $(document).on('ready', function() {
       blinker();
       setInterval(blinker, 1000);
     }
-      
+
   }
 
   function makeMove() {
