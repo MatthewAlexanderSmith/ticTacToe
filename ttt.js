@@ -4,6 +4,9 @@ $(document).on('ready', function() {
   var mode = new gameState("initializing");
   logState(mode);
 
+    var audio = new Audio('test_audio.mp3');
+    audio.play();
+
   $(function(){
     $("#mainMessage").typed({
       strings: ["Welcome to jQuery Tic-Tac-Toe", "no biting", "no eye gauging", "no fish hooks", "click any square to begin..."],
@@ -23,7 +26,9 @@ $(document).on('ready', function() {
     $('td').off().on('click', makeMove).removeAttr('class').html('');
     $('button').on('click', gameReset);
     scoreUpdate();
+
     turn = 0;
+
     if ((mode.state === "initializing") || (mode.state === "playing")) {
       $('.hideMessage').toggle();
       mode.state = "waiting";
@@ -107,6 +112,10 @@ $(document).on('ready', function() {
 
 
     function checkForWinner(idXs, idOs) {
+
+
+
+
       // Store all possible 3 digit combinations of idXs and idOs
       // See combos.js for combination generator.
       var xCombos = k_combinations(idXs, 3);
