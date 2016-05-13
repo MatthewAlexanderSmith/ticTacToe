@@ -4,7 +4,7 @@ $(document).on('ready', function() {
   var mode = new gameState("initializing");
   logState(mode);
 
-    var audio = new Audio('test_audio.mp3');
+    var audio = new Audio('audio/test_audio.mp3');
     audio.play();
 
   $(function(){
@@ -91,6 +91,7 @@ $(document).on('ready', function() {
       game.xWins = 0;
       $('#mainTitle').html('New Game');
       scoreUpdate();
+	  tdInit();
     }
 
     function scoreTracker(xWins, oWins){
